@@ -1,8 +1,9 @@
 # CS309_EcommerceProject
-This repository contains the source code and project files for the final project of the CS309 course. The project is a fully functional e-commerce website that showcases modern web development practices, including user-friendly design and efficient functionality.
----
+
+## This repository contains the source code and project files for the final project of the CS309 course. The project is a fully functional e-commerce website that showcases modern web development practices, including user-friendly design and efficient functionality.
 
 ## Table of Contents
+
 - [About the Project](#about-the-project)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -12,11 +13,13 @@ This repository contains the source code and project files for the final project
 ---
 
 ## About the Project
+
 This project was created as a part of the CS309 course to demonstrate the practical implementation of web development skills. The goal was to create a responsive, user-friendly, and functional website.
 
 ---
 
 ## Features
+
 - Responsive design compatible with various devices.
 - Product catalog with search and filter functionality.
 - User authentication for secure account management.
@@ -26,6 +29,7 @@ This project was created as a part of the CS309 course to demonstrate the practi
 ---
 
 ## Technologies Used
+
 - **Frontend:** HTML, CSS, JavaScript, React
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
@@ -34,6 +38,7 @@ This project was created as a part of the CS309 course to demonstrate the practi
 ---
 
 ## Setup and Installation
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/abanoub-refaat/CS309_EcommerceProject.git
@@ -54,6 +59,7 @@ This project was created as a part of the CS309 course to demonstrate the practi
 ---
 
 ## Team Members
+
 - **[Abanoub Refaat Ibrahim]** - Team Lead (postponed)
 - [Antonious Samy] - Role (postponed)
 - [Ebram Wael] - Role (postponed)
