@@ -37,7 +37,7 @@ const Login = () => {
           <p>please login here</p>
         </div>
         <form className="login-form" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="email" className="form-label">
               Email Adress{" "}
             </label>
@@ -52,7 +52,7 @@ const Login = () => {
               placeholder="E-mail"
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="password" className="form-label">
               Password{" "}
             </label>

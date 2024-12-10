@@ -94,17 +94,17 @@ body {
   }
 }
 
-.form-group {
+.login-form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-.form-group label {
+.login-form-group label {
   margin-bottom: 5px;
 }
 
-.form-group input {
+.login-form-group input {
   padding: 10px;
   border: 1px solid #000;
   border-radius: 8px;
@@ -114,12 +114,12 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.form-group input:focus {
+.login-form-group input:focus {
   outline: none;
   background-color: #f2f2f2;
 }
 
-.form-group input::placeholder {
+.login-form-group input::placeholder {
   color: #aeaeae;
 }
 
