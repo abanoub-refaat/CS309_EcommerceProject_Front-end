@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Signup.css";
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -24,15 +25,16 @@ function Signup() {
   return (
     <div className="signup-container">
       <div className="signup-image">
-        {Image}
-        <img src="" alt="Signup Visual" />
+        <img src="./assets/signup-image.svg" alt="Signup Visual" />
       </div>
-      <div className="signup-form">
-        <h2>Create New Account</h2>
-        <p>Please enter details</p>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>First Name</label>
+      <div className="signup-content">
+        <div className="signup-text">
+          <h2>Create New Account</h2>
+          <p>Please enter your details</p>
+        </div>
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <div className="signup-form-group">
+            <label> Name</label>
             <input
               type="text"
               name="firstName"
@@ -42,18 +44,7 @@ function Signup() {
               required
             />
           </div>
-          <div className="form-group">
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              placeholder="Enter your last name"
-              required
-            />
-          </div>
-          <div className="form-group">
+          <div className="signup-form-group">
             <label>Email Address</label>
             <input
               type="email"
@@ -64,7 +55,19 @@ function Signup() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="signup-form-group">
+            <label>Phone Number</label>
+            <input
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              onChange={handleChange}
+              placeholder="Enter your phone number"
+              required
+            />
+          </div>
+          <div className="signup-form-group">
             <label>Password</label>
             <input
               type="password"
@@ -75,7 +78,7 @@ function Signup() {
               required
             />
           </div>
-          <div className="form-group checkbox">
+          <div className="signup-checkbox">
             <input
               type="checkbox"
               name="agreed"
@@ -87,7 +90,7 @@ function Signup() {
               I agree to the <a href="/terms">Terms & Conditions</a>
             </label>
           </div>
-          <button type="submit" className="submit-button">
+          <button type="submit" className="signup-button">
             Signup
           </button>
         </form>
