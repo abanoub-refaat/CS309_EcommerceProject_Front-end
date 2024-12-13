@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState  } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 
 function Signup() {
@@ -9,6 +10,7 @@ function Signup() {
     password: "",
   });
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
 
   const handleChange = (e) => {
@@ -33,6 +35,8 @@ function Signup() {
 
       if (response.ok) {
         setMessage('Signup successful!');
+        setTimeout(() => {
+          navigate("/home");}, 1000);
       } else {
         setMessage('Signup failed!');
       }
@@ -54,7 +58,6 @@ function Signup() {
           <h2>Create New Account</h2>
           <p>Please enter your details</p>
         </div>
-        {message && <p className="message">{message}</p>}
         <form className="signup-form" onSubmit={handleSubmit}>
           <div className="signup-form-group">
             <label> Name</label>
@@ -84,7 +87,7 @@ function Signup() {
               type="tel"
               name="phoneNumber"
               value={formData.phoneNumber}
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              pattern="[0-9]{11}"
               onChange={handleChange}
               placeholder="Enter your phone number"
               required
@@ -117,6 +120,7 @@ function Signup() {
             Signup
           </button>
         </form>
+        {message && (<p className={`message ${response.ok ? "success" : "error"}`}>{message}</p>)}
       </div>
     </div>
   );
