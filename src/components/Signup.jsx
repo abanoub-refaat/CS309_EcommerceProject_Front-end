@@ -10,6 +10,9 @@ function Signup() {
     password: "",
   });
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState(null);
+  const navigate = useNavigate();
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -36,15 +39,18 @@ function Signup() {
 
       if (response.ok) {
         setMessage("Signup successful!");
+        setStatus("success");
         setTimeout(() => {
           navigate("/home"); 
         }, 1000);
       } else {
         setMessage("Signup failed!");
+        setStatus("error");
       }
     } catch (error) {
       console.error("Error:", error);
       setMessage("An error occurred. Please try again.");
+      setStatus("error");
     }
   };
 
@@ -125,11 +131,6 @@ function Signup() {
             Signup
           </button>
         </form>
-        {message && (
-          <p className={`message ${response.ok ? "success" : "error"}`}>
-            {message}
-          </p>
-        )}
       </div>
     </div>
   );
