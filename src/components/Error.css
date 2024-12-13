@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Parkinsans:wght@300..800&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Parkinsans", sans-serif;
+  color: #1d1d1d;
+  text-align: center;
+  box-sizing: border-box;
+}
+.error-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-content h1 {
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.error-content p {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.error-img img {
+  height: 350px;
+}
+
+.return-btn {
+  padding: 5px 20px;
+  background-color: #263238;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.return-btn:hover {
+  background-color: #1d1d1d;
+}
+
+.return-btn:active {
+  background-color: #000;
+}
+
+@media (max-width: 1000px) {
+  .error-img img {
+    height: 200px;
+  }
+
+  .error-content h1 {
+    font-size: 1rem;
+  }
+
+  .error-content p {
+    font-size: 0.8rem;
+  }
+}
