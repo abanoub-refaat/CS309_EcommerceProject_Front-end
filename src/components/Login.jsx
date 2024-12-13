@@ -1,30 +1,45 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const handleSubmit = (e) => {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const handleSubmit =  (e) => {
     e.preventDefault();
-    // Handle login logic here
-    fetch("https://example.com/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((response) => response.json())
+    setLoading(true);
+    setError("");
+      fetch(
+        "http://localhost:4000/api/v1/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Invalid credentials or server error");
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log("Success:", data);
-        // Handle successful login here
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
       })
       .catch((error) => {
-        console.error("Error:", error);
-        // Handle login error here
-      });
+        setError(error.message);
+        console.error("Error:", error.message);
+      })
+      .finally(() => setLoading(false));
   };
   return (
     <div className="login-container">
@@ -70,6 +85,7 @@ const Login = () => {
           <button type="submit" className="login-button">
             Login
           </button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <label>
             <input
               type="checkbox"
