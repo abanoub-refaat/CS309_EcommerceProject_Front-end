@@ -1,0 +1,133 @@
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.navbar a {
+    padding: 5px 30px;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+}
+
+ul {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.fa-shopping-cart:hover {
+    color: blue;
+}
+
+.fa-search:hover {
+    color: blue;
+}
+
+.submit-button {
+    background-color: rgb(246, 251, 255);
+    color: black;
+    margin-left: -200px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.submit-button:hover {
+    background-color: blue;
+}
+
+.icons {
+    gap: 30px;
+    align-items: center;
+    display: flex;
+}
+
+.icons a {
+    padding: 0px 0px;
+    margin-left: 40px;
+    color: black;
+}
+
+.icons a:hover {
+    color: #ff0000;
+}
+
+.nav-logo {
+    width: 60px;
+}
+
+.nav-logo img {
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .navbar {
+        flex-direction: column; 
+        justify-content: center;
+    }
+    .navbar-links {
+        flex-direction: column; 
+        gap: 10px;
+    }
+    .submit-button {
+        margin-left: 0; 
+        margin-top: 10px; 
+    }
+    .icons {
+        flex-direction: column; 
+        gap: 15px;
+    }
+    .icons a {
+        margin-left: 0;
+    }
+    .nav-logo {
+        width: 50px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 5px;
+    }
+    .navbar-links a {
+        padding: 10px; 
+        font-size: 16px; 
+    }
+    .submit-button {
+        width: 100%; 
+        margin-left: 0; 
+    }
+    .icons {
+        gap: 20px;
+    }
+    .nav-logo {
+        width: 40px; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px; 
+    }
+    .navbar-links a {
+        font-size: 14px; 
+        padding: 8px; 
+    }
+    .icons a {
+        margin-left: 10px; 
+    }
+    .submit-button {
+        width: 100%; 
+        padding: 12px; 
+        font-size: 16px; 
+    }
+    .nav-logo {
+        width: 30px; 
+    }
+}
