@@ -1,4 +1,4 @@
-import { useState  } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 
@@ -8,10 +8,11 @@ function Signup() {
     email: "",
     phoneNumber: "",
     password: "",
+    agreed: false,
   });
   const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
-
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -20,33 +21,36 @@ function Signup() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
-  //fetching data from the back-end
 
-  const handleSubmit =  async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/v1/users/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch(
+        "http://localhost:4000/api/v1/users/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
-        setMessage('Signup successful!');
+        setMessage("Signup successful!");
+        setIsSuccess(true);
         setTimeout(() => {
-          navigate("/home");}, 1000);
+          navigate("/home");
+        }, 1000);
       } else {
-        setMessage('Signup failed!');
+        setMessage("Signup failed!");
+        setIsSuccess(false);
       }
     } catch (error) {
-      console.error('Error:', error);
-      setMessage('An error occurred. Please try again.');
+      console.error("Error:", error);
+      setMessage("An error occurred. Please try again.");
     }
   };
-
-  
 
   return (
     <div className="signup-container">
@@ -63,7 +67,7 @@ function Signup() {
             <label> Name</label>
             <input
               type="text"
-              name="firstName"
+              name="name"
               value={formData.firstName}
               onChange={handleChange}
               placeholder="Enter your first name"
@@ -120,7 +124,11 @@ function Signup() {
             Signup
           </button>
         </form>
-        {message && (<p className={`message ${response.ok ? "success" : "error"}`}>{message}</p>)}
+        {message && (
+          <p className={`message ${isSuccess ? "success" : "error"}`}>
+            {message}
+          </p>
+        )}
       </div>
     </div>
   );
