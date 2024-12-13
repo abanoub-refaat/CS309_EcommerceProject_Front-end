@@ -16,6 +16,7 @@ function Signup() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
+  //fetching data from the back-end
 
   const handleSubmit =  async (e) => {
     e.preventDefault();
