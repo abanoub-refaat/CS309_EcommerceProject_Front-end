@@ -10,7 +10,6 @@ function Signup() {
   });
   const [message, setMessage] = useState("");
 
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -20,29 +19,30 @@ function Signup() {
   };
   //fetching data from the back-end
 
-  const handleSubmit =  async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/api/v1/users/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch(
+        "http://localhost:4000/api/v1/users/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
-        setMessage('Signup successful!');
+        setMessage("Signup successful!");
       } else {
-        setMessage('Signup failed!');
+        setMessage("Signup failed!");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setMessage('An error occurred. Please try again.');
+      console.error("Error:", error);
+      setMessage("An error occurred. Please try again.");
     }
   };
-
-  
 
   return (
     <div className="signup-container">
@@ -54,7 +54,11 @@ function Signup() {
           <h2>Create New Account</h2>
           <p>Please enter your details</p>
         </div>
-        {message && (<p className={`message ${response.ok ? "success" : "error"}`}>{message}</p>)}
+        {message && (
+          <p className={`message ${response.ok ? "success" : "error"}`}>
+            {message}
+          </p>
+        )}
         <form className="signup-form" onSubmit={handleSubmit}>
           <div className="signup-form-group">
             <label> Name</label>
