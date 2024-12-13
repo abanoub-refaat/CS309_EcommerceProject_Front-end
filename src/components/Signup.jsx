@@ -8,11 +8,11 @@ function Signup() {
     email: "",
     phoneNumber: "",
     password: "",
+    agreed: false,
   });
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState(null);
+  const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
-
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -21,7 +21,6 @@ function Signup() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
-  //fetching data from the back-end
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,18 +38,17 @@ function Signup() {
 
       if (response.ok) {
         setMessage("Signup successful!");
-        setStatus("success");
+        setIsSuccess(true);
         setTimeout(() => {
-          navigate("/home"); 
+          navigate("/home");
         }, 1000);
       } else {
         setMessage("Signup failed!");
-        setStatus("error");
+        setIsSuccess(false);
       }
     } catch (error) {
       console.error("Error:", error);
       setMessage("An error occurred. Please try again.");
-      setStatus("error");
     }
   };
 
@@ -64,17 +62,12 @@ function Signup() {
           <h2>Create New Account</h2>
           <p>Please enter your details</p>
         </div>
-        {message && (
-          <p className={`message ${response.ok ? "success" : "error"}`}>
-            {message}
-          </p>
-        )}
         <form className="signup-form" onSubmit={handleSubmit}>
           <div className="signup-form-group">
             <label> Name</label>
             <input
               type="text"
-              name="firstName"
+              name="name"
               value={formData.firstName}
               onChange={handleChange}
               placeholder="Enter your first name"
@@ -131,6 +124,11 @@ function Signup() {
             Signup
           </button>
         </form>
+        {message && (
+          <p className={`message ${isSuccess ? "success" : "error"}`}>
+            {message}
+          </p>
+        )}
       </div>
     </div>
   );

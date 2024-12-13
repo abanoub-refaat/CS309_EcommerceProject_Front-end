@@ -14,12 +14,11 @@ body {
   height: 100vh;
 }
 .message.success {
-  color: green;
+  color: rgb(14, 168, 14);
 }
 .message.error {
-  color: red;
+  color: rgb(192, 13, 13);
 }
-
 
 @media (max-width: 1000px) {
   .signup-container {
