@@ -84,7 +84,7 @@ function Signup() {
               type="tel"
               name="phoneNumber"
               value={formData.phoneNumber}
-              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              pattern="[0-9]{11}"
               onChange={handleChange}
               placeholder="Enter your phone number"
               required
