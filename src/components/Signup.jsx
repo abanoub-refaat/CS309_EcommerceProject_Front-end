@@ -8,6 +8,8 @@ function Signup() {
     phoneNumber: "",
     password: "",
   });
+  const [message, setMessage] = useState("");
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -16,6 +18,7 @@ function Signup() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
+  //fetching data from the back-end
 
   const handleSubmit =  async (e) => {
     e.preventDefault();
@@ -51,6 +54,7 @@ function Signup() {
           <h2>Create New Account</h2>
           <p>Please enter your details</p>
         </div>
+        {message && <p className="message">{message}</p>}
         <form className="signup-form" onSubmit={handleSubmit}>
           <div className="signup-form-group">
             <label> Name</label>
