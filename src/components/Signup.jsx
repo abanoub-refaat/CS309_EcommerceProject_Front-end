@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 
 function Signup() {
@@ -121,6 +122,11 @@ function Signup() {
             Signup
           </button>
         </form>
+        {message && (
+          <p className={`message ${response.ok ? "success" : "error"}`}>
+            {message}
+          </p>
+        )}
       </div>
     </div>
   );
