@@ -36,6 +36,9 @@ function Signup() {
 
       if (response.ok) {
         setMessage("Signup successful!");
+        setTimeout(() => {
+          navigate("/home"); 
+        }, 1000);
       } else {
         setMessage("Signup failed!");
       }
