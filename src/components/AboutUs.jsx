@@ -40,7 +40,7 @@ const AboutUs = () => {
       </div>
 
       <div className="member-container">
-        <img src="./assets/menna.png" alt="Menna Ayman" />
+        <img src="./assets/manon.png" alt="Menna Ayman" />
         <div className="about-content">
           <h1>Menna Ayman</h1>
           <h2>
@@ -52,7 +52,7 @@ const AboutUs = () => {
       </div>
 
       <div className="member-container">
-        <img src="./assets/any.png" alt="Esraa Hassan" />
+        <img src="./assets/asora.png" alt="Esraa Hassan" />
         <div className="about-content">
           <h1>Esraa Hassan</h1>
           <h2>
