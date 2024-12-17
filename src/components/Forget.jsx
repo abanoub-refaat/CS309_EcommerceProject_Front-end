@@ -1,5 +1,5 @@
 import { useState } from "react";
-// import "./Forget.css";
+import "./Forget.css";
 
 const Forget = () => {
   const [email, setEmail] = useState("");
@@ -56,9 +56,9 @@ const Forget = () => {
               placeholder="E-mail"
             />
           </div>
-          <div className="password-form-group">
+          <div className="ChangePassword-form-group">
             <label htmlFor="password" className="form-label">
-              password{" "}
+              Password{" "}
             </label>
             <input
               type="password"
