@@ -99,8 +99,8 @@ const Forget = () => {
             Change
           </button>
         </form>
+        {message && <p className="message">{message}</p>}
       </div>
-      {message && <p className="message">{message}</p>}
     </div>
   );
 };
