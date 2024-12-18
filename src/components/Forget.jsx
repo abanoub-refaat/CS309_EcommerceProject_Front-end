@@ -42,7 +42,6 @@ const Forget = () => {
         console.error("Error:", error);
       });
   };
-
   return (
     <div className="ChangePassword-container">
       <div className="ChangePassword-content">
@@ -50,15 +49,20 @@ const Forget = () => {
           <h2>Reset your password</h2>
           <p>please enter your email and your new password</p>
         </div>
-        <form onSubmit={handleSubmit} className="forget-form">
-          <div className="forget-form-group">
-            <label htmlFor="email">Email:</label>
+        <form className="ChangePassword-form" onSubmit={handleSubmit}>
+          <div className="ChangePassword-form-group">
+            <label htmlFor="email" className="form-label">
+              Email Address{" "}
+            </label>
             <input
-              id="email"
               type="email"
+              id="email"
+              name="email"
+              className="form-input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              placeholder="E-mail"
             />
           </div>
           <div className="ChangePassword-form-group">
@@ -66,25 +70,29 @@ const Forget = () => {
               Password{" "}
             </label>
             <input
-              id="password"
               type="password"
+              id="password"
+              name="password"
+              className="form-input"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              placeholder="Password"
             />
           </div>
-          <div className="forget-form-group">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+          <div className="ChangePassword-form-group">
+            <label htmlFor="ConfirmPassword" className="form-label">
+              Confirm password{" "}
+            </label>
             <input
-              id="confirmPassword"
               type="password"
-
               id="password"
               name="password"
               className="form-input"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
+              placeholder="Password"
             />
           </div>
           <button type="submit" className="ChangePassword-button">
