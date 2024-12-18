@@ -6,7 +6,6 @@ const Forget = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,8 +20,6 @@ const Forget = () => {
       return;
     }
 
-    setLoading(true);
-
     fetch("http://localhost:5173/api/v1/users/update", {
       method: "POST",
       headers: {
@@ -31,7 +28,6 @@ const Forget = () => {
       body: JSON.stringify({ email, password }),
     })
       .then((response) => {
-        setLoading(false);
         if (!response.ok) {
           throw new Error("Failed to reset password");
         }
@@ -42,18 +38,17 @@ const Forget = () => {
         console.log("Response:", data);
       })
       .catch((error) => {
-        setLoading(false);
         setMessage("Error resetting password. Please try again.");
         console.error("Error:", error);
       });
   };
 
   return (
-    <div className="forget-container">
-      <div className="forget-content">
-        <div className="forget-text">
-          <h2>Reset Password</h2>
-          <p>Enter your email and new password to reset your password.</p>
+    <div className="ChangePassword-container">
+      <div className="ChangePassword-content">
+        <div className="text">
+          <h2>Reset your password</h2>
+          <p>please enter your email and your new password</p>
         </div>
         <form onSubmit={handleSubmit} className="forget-form">
           <div className="forget-form-group">
@@ -66,8 +61,10 @@ const Forget = () => {
               required
             />
           </div>
-          <div className="forget-form-group">
-            <label htmlFor="password">New Password:</label>
+          <div className="ChangePassword-form-group">
+            <label htmlFor="password" className="form-label">
+              Password{" "}
+            </label>
             <input
               id="password"
               type="password"
@@ -81,13 +78,17 @@ const Forget = () => {
             <input
               id="confirmPassword"
               type="password"
+
+              id="password"
+              name="password"
+              className="form-input"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
             />
           </div>
-          <button type="submit" disabled={loading} className="forget-btn">
-            {loading ? "Processing..." : "Reset Password"}
+          <button type="submit" className="ChangePassword-button">
+            Change
           </button>
         </form>
         {message && <p className="message">{message}</p>}
