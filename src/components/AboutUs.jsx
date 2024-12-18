@@ -76,7 +76,7 @@ const AboutUs = () => {
       </div>
 
       <div className="member-container">
-        <img src="./assets/any.png" alt="Fady Monir" />
+        <img src="./assets/foda.png" alt="Fady Monir" />
         <div className="about-content">
           <h1>Fady Monir</h1>
           <h2>
