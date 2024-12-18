@@ -31,6 +31,9 @@ const Login = () => {
       })
       .then((data) => {
         console.log("Success:", data);
+        if(rememberMe){
+          localStorage.setItem("Email and password",JSON.stringify(data))
+        }
         setTimeout(() => {
           navigate("/home");
         }, 1000);
