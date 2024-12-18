@@ -1,96 +1,96 @@
 import { useState } from "react";
-// import "./Forget.css";
+import "./Forget.css";
 
 const Forget = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password !== ConfirmPassword) {
-      setErrorMessage("Passwords do not match!");
-    } else {
-      setErrorMessage("");
-      alert("Password Changed successfully!");
-      // Proceed with form submission logic
+
+    if (password.length < 6) {
+      setMessage("Password must be at least 6 characters.");
+      return;
     }
-    // Handle login logic here
-    fetch("https://example.com/api/Forget", {
+
+    if (password !== confirmPassword) {
+      setMessage("Passwords do not match.");
+      return;
+    }
+
+    setLoading(true);
+
+    fetch("http://localhost:5173/api/v1/users/update", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ email, password, ConfirmPassword }),
+      body: JSON.stringify({ email, password }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        setLoading(false);
+        if (!response.ok) {
+          throw new Error("Failed to reset password");
+        }
+        return response.json();
+      })
       .then((data) => {
-        console.log("Success:", data);
-        // Handle successful change password
+        setMessage("Password reset successfully.");
+        console.log("Response:", data);
       })
       .catch((error) => {
+        setLoading(false);
+        setMessage("Error resetting password. Please try again.");
         console.error("Error:", error);
-        // Handle change password error here
       });
   };
+
   return (
-    <div className="ChangePassword-container">
-      <div className="ChangePassword-content">
-        <div className="text">
-          <p>please enter your email and your new password</p>
+    <div className="forget-container">
+      <div className="forget-content">
+        <div className="forget-text">
+          <h2>Reset Password</h2>
+          <p>Enter your email and new password to reset your password.</p>
         </div>
-        <form className="ChangePassword-form" onSubmit={handleSubmit}>
-          <div className="ChangePassword-form-group">
-            <label htmlFor="email" className="form-label">
-              Email Address{" "}
-            </label>
+        <form onSubmit={handleSubmit} className="forget-form">
+          <div className="forget-form-group">
+            <label htmlFor="email">Email:</label>
             <input
-              type="email"
               id="email"
-              name="email"
-              className="form-input"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              placeholder="E-mail"
             />
           </div>
-          <div className="password-form-group">
-            <label htmlFor="password" className="form-label">
-              password{" "}
-            </label>
+          <div className="forget-form-group">
+            <label htmlFor="password">New Password:</label>
             <input
-              type="password"
               id="password"
-              name="password"
-              className="form-input"
+              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              placeholder="Password"
             />
           </div>
-          <div className="ChangePassword-form-group">
-            <label htmlFor="ConfirmPassword" className="form-label">
-              Confirm password{" "}
-            </label>
+          <div className="forget-form-group">
+            <label htmlFor="confirmPassword">Confirm Password:</label>
             <input
+              id="confirmPassword"
               type="password"
-              id="password"
-              name="password"
-              className="form-input"
-              value={ConfirmPassword}
+              value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
-              placeholder="Password"
             />
           </div>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-          <button type="submit" className="ChangePassword-button">
-            Change
+          <button type="submit" disabled={loading} className="forget-btn">
+            {loading ? "Processing..." : "Reset Password"}
           </button>
         </form>
+        {message && <p className="message">{message}</p>}
       </div>
     </div>
   );
