@@ -131,3 +131,7 @@ input[type="checkbox"] {
 .ChangePassword-content .ChangePassword-button:active {
   background-color: #000;
 }
+
+.message {
+  color: red;
+}

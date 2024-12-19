@@ -80,10 +80,10 @@ const Login = () => {
             Remember Me
           </label>
           <div className="login-links">
-            <Link href="/forgot-password" className="forgot-password">
+            <Link to="/forget-password" className="forget-password">
               Forgot Password?
             </Link>
-            <Link href="/signup" className="register-link">
+            <Link to="/signup" className="register-link">
               Don&apos;t have an account?
             </Link>
           </div>
