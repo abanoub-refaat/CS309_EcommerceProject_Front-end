@@ -27,13 +27,13 @@ function ProductDetailsPage() {
       });
   }, [id]);
 
-  // Load wishlist from localStorage
+  
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     setWishlist(storedWishlist);
   }, []);
 
-  // Add product to wishlist
+  
   const addToWishlist = () => {
     if (!product) {
       alert("Product details are not loaded yet.");
