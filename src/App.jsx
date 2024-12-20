@@ -5,7 +5,8 @@ import Login from "./components/Login";
 import Error from "./components/Error";
 import Navbar from "./components/Navbar";
 import Forget from "./components/Forget";
-import Products from "./components/Products";
+import Products from "./components/ProductsPage";
+import ProductDetailsPage from "./ProductDetailsPage";
 import AboutUs from "./components/AboutUs";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetailsPage />} />
           <Route path="/" element={<Signup />} />
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
