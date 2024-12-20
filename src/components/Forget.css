@@ -6,28 +6,33 @@ body {
   font-family: "Parkinsans", sans-serif;
 }
 
-.signup-container {
+@media (max-width: 1000px) {
+  body {
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+}
+
+.ChangePassword-container {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  height: 100vh;
-}
-.message.success {
-  color: rgb(14, 168, 14);
-}
-.message.error {
-  color: rgb(192, 13, 13);
+  height: 90vh;
 }
 
 @media (max-width: 1000px) {
-  .signup-container {
+  .ChangePassword-container {
     flex-direction: column;
     width: 100%;
   }
 }
 
-.signup-content {
+.ChangePassword-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,35 +46,18 @@ body {
 }
 
 @media (max-width: 1000px) {
-  .signup-content {
+  .ChangePassword-content {
     width: 100%;
   }
 }
 
-.signup-image {
-  height: 100%;
-  width: 50%;
-  overflow: hidden;
-}
-
-.signup-image img {
-  height: 100%;
-  width: 110%;
-}
-
-@media (max-width: 1000px) {
-  .signup-image {
-    width: 80%;
-  }
-}
-
-.signup-content h2 {
+.ChangePassword-content h2 {
   font-size: 32px;
   text-align: center;
   margin-bottom: 0;
 }
 
-.signup-content p {
+.ChangePassword-content p {
   font-size: 16px;
   text-align: center;
   margin-top: 5px;
@@ -77,29 +65,29 @@ body {
   color: #666;
 }
 
-.signup-content .signup-form {
+.ChangePassword-content .ChangePassword-form {
   display: flex;
   flex-direction: column;
   width: 55%;
 }
 
 @media (max-width: 1000px) {
-  .signup-content .signup-form {
+  .ChangePassword-content .ChangePassword-form {
     width: 80%;
   }
 }
 
-.signup-form-group {
+.ChangePassword-form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-.signup-form-group label {
+.ChangePassword-form-group label {
   margin-bottom: 5px;
 }
 
-.signup-form-group input {
+.ChangePassword-form-group input {
   padding: 10px;
   border: 1px solid #000;
   border-radius: 8px;
@@ -109,12 +97,12 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.signup-form-group input:focus {
+.ChangePassword-form-group input:focus {
   outline: none;
   background-color: #f2f2f2;
 }
 
-.signup-form-group input::placeholder {
+.ChangePassword-form-group input::placeholder {
   color: #aeaeae;
 }
 
@@ -123,7 +111,7 @@ input[type="checkbox"] {
   accent-color: #263238;
 }
 
-.signup-content .signup-button {
+.ChangePassword-content .ChangePassword-button {
   padding: 15px 25px;
   background-color: #263238;
   color: #fff;
@@ -136,26 +124,14 @@ input[type="checkbox"] {
   margin-bottom: 10px;
 }
 
-.signup-content .signup-button:hover {
+.ChangePassword-content .ChangePassword-button:hover {
   background-color: #1d1d1d;
 }
 
-.signup-content .signup-button:active {
+.ChangePassword-content .ChangePassword-button:active {
   background-color: #000;
 }
 
-.signup-checkbox {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.signup-checkbox a {
-  text-decoration: none;
-  color: #263238;
-  font-weight: bold;
-}
-
-.signup-checkbox label {
-  font-size: 14px;
-  color: #666;
+.message {
+  color: red;
 }

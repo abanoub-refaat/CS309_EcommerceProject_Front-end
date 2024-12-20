@@ -2,21 +2,33 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import Error from "./components/Error";
+import Navbar from "./components/Navbar";
+import Forget from "./components/Forget";
+import Products from "./components/ProductsPage";
+import ProductDetailsPage from "./components/ProductDetailsPage";
+import AboutUs from "./components/AboutUs";
+import Wishlist from "./components/Wishlist";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cart" element={<div>My Cart Page</div>} />
-        <Route path="/wishlist" element={<div>My Wishlist Page</div>} />
-        <Route path="/about" element={<div>About Us Page</div>} />
-        <Route path="/terms" element={<div>Terms & Conditions Page</div>} />
-        <Route path="/*" element={<NotFound/>}/>
-      </Routes>
-    </Router>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/products" element={<Products />} />
+          <Route path="/product/:id" element={<ProductDetailsPage />} />
+          <Route path="/wishlist" element={<Wishlist/>} />
+          <Route path="/" element={<Signup />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/forget-password" element={<Forget />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/*" element={<Error />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
