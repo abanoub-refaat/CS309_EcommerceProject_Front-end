@@ -16,7 +16,7 @@ const Login = () => {
         const { email, password } = JSON.parse(savedLoginData);
         setEmail(email);
         setPassword(password);
-      
+
         fetch("http://localhost:4000/api/v1/users/login", {
           method: "POST",
           headers: {
@@ -26,7 +26,9 @@ const Login = () => {
         })
           .then((res) => {
             if (!res.ok) {
-              throw new Error("Auto-login failed: Invalid credentials or server error");
+              throw new Error(
+                "Auto-login failed: Invalid credentials or server error"
+              );
             }
             return res.json();
           })
@@ -40,7 +42,7 @@ const Login = () => {
           });
       } catch (error) {
         console.error("Error parsing login data:", error.message);
-        localStorage.removeItem("loginDate"); 
+        localStorage.removeItem("loginDate");
       }
     }
   }, [navigate]);
@@ -74,7 +76,7 @@ const Login = () => {
       .catch((error) => {
         setError(error.message);
         console.error("Error:", error.message);
-      })
+      });
   };
 
   return (
