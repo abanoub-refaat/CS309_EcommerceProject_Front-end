@@ -72,9 +72,11 @@ function ProductDetailsPage() {
           <p className="product-price">
             <strong>Price:</strong> ${product.price}
           </p>
-          <button className="add-to-cart-button" onClick={addToWishlist}>
-            Add to Cart
+          
+          <button className="add-to-wishlist-button" onClick={addToWishlist}>
+            Add to Wishlist
           </button>
+          <button className="add-to-cart-button"> Add to cart</button>
         </div>
       </div>
     </div>
