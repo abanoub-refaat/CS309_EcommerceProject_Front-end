@@ -11,7 +11,6 @@ const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
     setWishlist(storedWishlist);
   }, []);
 
-
   const removeFromWishlist = (productId) => {
     const updatedWishlist = wishlist.filter((item) => item.id !== productId);
     setWishlist(updatedWishlist);

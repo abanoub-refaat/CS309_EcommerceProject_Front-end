@@ -32,7 +32,6 @@ function ProductDetailsPage() {
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     setWishlist(storedWishlist);
-    console.log(storedWishlist);
   }, []);
 
   // Add product to wishlist
