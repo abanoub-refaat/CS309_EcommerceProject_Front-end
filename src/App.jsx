@@ -9,10 +9,11 @@ import AboutUs from "./components/AboutUs";
 
 function App() {
   return (
+    <>
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Signup />} />
+        <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forget-password" element={<Forget />} />
@@ -20,6 +21,7 @@ function App() {
         <Route path="/*" element={<Error />} />
       </Routes>
     </Router>
+    </>
   );
 }
 
