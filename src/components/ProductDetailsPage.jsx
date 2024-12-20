@@ -27,13 +27,11 @@ function ProductDetailsPage() {
       });
   }, [id]);
 
-  
   useEffect(() => {
     const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     setWishlist(storedWishlist);
   }, []);
 
-  
   const addToWishlist = () => {
     if (!product) {
       alert("Product details are not loaded yet.");
@@ -66,13 +64,14 @@ function ProductDetailsPage() {
         <div className="product-info">
           <h1 className="product-title">{product.title}</h1>
           <p className="product-category">
-            <strong>Category:</strong> {product.category}
+            <strong className="category-label">Category:</strong>{" "}
+            {product.category}
           </p>
           <p className="product-description">{product.description}</p>
           <p className="product-price">
             <strong>Price:</strong> ${product.price}
           </p>
-          
+
           <button className="add-to-wishlist-button" onClick={addToWishlist}>
             Add to Wishlist
           </button>
