@@ -22,18 +22,16 @@ export default function Navbar() {
           <div className="navbar-link">
             <Link to="/about">Contact Us</Link>
           </div>
-          <div className="icons">
-            <div className="icons-container">
-              <Link href="/search">
-                <i className="fas fa-search"></i>
-              </Link>
-              <Link to="/shopping-cart">
-                <i className="fas fa-shopping-cart"></i>
-              </Link>
-              <Link a="/wishlist" about="wishlist">
-                <i className="fas fa-heart"></i>
-              </Link>
-            </div>
+          <div className="icons-container">
+            <Link to="/search">
+              <i className="fas fa-search"></i>
+            </Link>
+            <Link to="/shopping-cart">
+              <i className="fas fa-shopping-cart"></i>
+            </Link>
+            <Link to="/wishlist">
+              <i className="fas fa-heart"></i>
+            </Link>
           </div>
         </div>
         <div className="btns-container">
