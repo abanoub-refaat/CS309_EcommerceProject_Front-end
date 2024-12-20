@@ -132,7 +132,7 @@ const Login = () => {
             Remember Me
           </label>
           <div className="login-links">
-            <Link to="/forget" className="forgot-password">
+            <Link to="/forget-password" className="forget-password">
               Forgot Password?
             </Link>
             <Link to="/signup" className="register-link">
