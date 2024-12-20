@@ -4,10 +4,10 @@ import "./Wishlist.css";
 
 function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
-
+const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
   
   useEffect(() => {
-    const storedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    console.log(storedWishlist)
     setWishlist(storedWishlist);
   }, []);
 

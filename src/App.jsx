@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetailsPage />} />
-          <Route path="/wishlist" component={Wishlist} />
+          <Route path="/wishlist" element={<Wishlist/>} />
           <Route path="/" element={<Signup />} />
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
