@@ -13,7 +13,7 @@ body {
   padding: 10px 20px;
   background-color: #263238;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   text-transform: uppercase;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -116,4 +116,75 @@ body {
   width: 100%;
   left: 0;
   transform: translateX(0);
+}
+
+.navbar-menu {
+list-style: none;
+display: none;
+gap: 15px;
+margin: 0;
+padding: 0;
+}
+
+.navbar-menu a:hover {
+background-color: #555;
+}
+
+.toggle-btn, .close-btn {
+  display: none;
+  font-size: 1.5em;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-btn.open {display: none;}
+
+.close-btn.open {display: block;}
+
+.navbar-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #263238;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar-menu.open {
+  display: flex;
+}
+
+.toggle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.toggle-list a {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  position: relative;
+  display: inline-block;
+  transition: color 0.1s ease;
+  cursor: pointer;
+}
+
+@media (max-width: 850px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .toggle-btn {
+    display: block;
+  }
+
 }
