@@ -2,13 +2,22 @@ import React, { useState, useEffect } from "react";
 
 const UserProfile = () => {
   const [user, setUser] = useState({});
-  const [loading , setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
-  const[error , setError]=useState("");
-
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
   // Fetch user data from the cbackend
   useEffect(() => {
-    fetch("") 
+    const loginData = localStorage.getItem("loginDate");
+    const [Date] = JSON.parse(loginData);
+    setEmail = setEmail(Date.email);
+    fetch("http://localhost:4000/api/v1/users/me", {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: loginData,
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch profile data");
@@ -31,9 +40,8 @@ const UserProfile = () => {
     setUser({ ...user, [name]: value });
   };
 
-  
   const handleUpdate = () => {
-    fetch("", {
+    fetch("http://localhost:4000/api/v1/users/update", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +56,7 @@ const UserProfile = () => {
       })
       .then(() => {
         alert("Profile updated successfully!");
-        setIsEditing(false); 
+        setIsEditing(false);
       })
       .catch((error) => {
         console.error("Error updating profile:", error);
@@ -56,18 +64,16 @@ const UserProfile = () => {
       });
   };
 
-  
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete your account?")) {
       try {
-        const response = await fetch("", {
+        const response = await fetch("http://localhost:4000/api/v1/users/delete", {
           method: "DELETE",
         });
         if (!response.ok) {
           throw new Error("Failed to delete user");
         }
         alert("User deleted successfully!");
-        
       } catch (error) {
         console.error("Error deleting user:", error);
       }

@@ -16,31 +16,35 @@ const Login = () => {
         const { email, password } = JSON.parse(savedLoginData);
         setEmail(email);
         setPassword(password);
-      
-        fetch("http://localhost:4000/api/v1/users/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        })
-          .then((res) => {
-            if (!res.ok) {
-              throw new Error("Auto-login failed: Invalid credentials or server error");
-            }
-            return res.json();
+
+        if (rememberMe) {
+          fetch("http://localhost:4000/api/v1/users/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
           })
-          .then((data) => {
-            console.log("Auto-login Success:");
-            navigate("/home");
-          })
-          .catch((error) => {
-            console.error("Auto-login Error:", error.message);
-            localStorage.removeItem("loginDate");
-          });
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error(
+                  "Auto-login failed: Invalid credentials or server error"
+                );
+              }
+              return res.json();
+            })
+            .then((data) => {
+              console.log("Auto-login Success:");
+              navigate("/home");
+            })
+            .catch((error) => {
+              console.error("Auto-login Error:", error.message);
+              localStorage.removeItem("loginDate");
+            });
+        }
       } catch (error) {
         console.error("Error parsing login data:", error.message);
-        localStorage.removeItem("loginDate"); 
+        localStorage.removeItem("loginDate");
       }
     }
   }, [navigate]);
@@ -63,10 +67,8 @@ const Login = () => {
       })
       .then((data) => {
         console.log("Success:", data);
-        if (rememberMe) {
-          const loginData = { email, password };
-          localStorage.setItem("loginDate", JSON.stringify(loginData));
-        }
+        const loginData = { email, password };
+        localStorage.setItem("loginDate", JSON.stringify(loginData));
         setTimeout(() => {
           navigate("/home");
         }, 1000);
@@ -74,7 +76,7 @@ const Login = () => {
       .catch((error) => {
         setError(error.message);
         console.error("Error:", error.message);
-      })
+      });
   };
 
   return (
