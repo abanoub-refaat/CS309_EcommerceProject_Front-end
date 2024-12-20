@@ -1,33 +1,30 @@
 import React, { useState, useEffect } from "react";
 
 const UserProfile = () => {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-    phone: "",
-  });
-
+  const [user, setUser] = useState({});
+  const [loading , setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
+  const[error , setError]=useState("");
 
   // Fetch user data from the cbackend
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch("");
+    fetch("") 
+      .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to fetch user data");
+          throw new Error("Failed to fetch profile data");
         }
-        const data = await response.json();
+        return response.json();
+      })
+      .then((data) => {
         setUser(data);
-      } catch (error) {
+        setLoading(false);
+      })
+      .catch((error) => {
         console.error("Error fetching user data:", error);
-      }
-    };
-
-    fetchUserData();
+        setError("Failed to load profile. Please try again later.");
+        setLoading(false);
+      });
   }, []);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,26 +32,28 @@ const UserProfile = () => {
   };
 
   
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
+  const handleUpdate = () => {
+    fetch("", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update profile");
+        }
+        return response.json();
+      })
+      .then(() => {
+        alert("Profile updated successfully!");
+        setIsEditing(false); 
+      })
+      .catch((error) => {
+        console.error("Error updating profile:", error);
+        alert("Failed to update profile. Please try again.");
       });
-      if (!response.ok) {
-        throw new Error("Failed to update user data");
-      }
-      const updatedUser = await response.json();
-      setUser(updatedUser); 
-      alert("User information updated successfully!");
-      setIsEditing(false);
-    } catch (error) {
-      console.error("Error updating user:", error);
-    }
   };
 
   
