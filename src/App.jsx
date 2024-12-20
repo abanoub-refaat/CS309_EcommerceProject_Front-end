@@ -5,10 +5,10 @@ import Login from "./components/Login";
 import Error from "./components/Error";
 import Navbar from "./components/Navbar";
 
-
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Signup />} />
         <Route path="/signup" element={<Signup />} />
