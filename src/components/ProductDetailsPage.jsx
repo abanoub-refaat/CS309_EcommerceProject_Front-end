@@ -7,6 +7,7 @@ function ProductDetailsPage() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -72,7 +73,9 @@ function ProductDetailsPage() {
           <p className="product-price">
             <strong>Price:</strong> ${product.price}
           </p>
-          <button className="add-to-cart-button">Add to Cart</button>
+          <button className="add-to-cart-button" onClick={addToWishlist}>
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
