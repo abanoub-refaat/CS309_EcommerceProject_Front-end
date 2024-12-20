@@ -5,63 +5,72 @@ const UserProfile = () => {
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [error, setError] = useState("");
-  const [email, setEmail] = useState("");
-  // Fetch user data from the cbackend
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    const loginData = localStorage.getItem("loginDate");
-    const [Date] = JSON.parse(loginData);
-    setEmail = setEmail(Date.email);
-    fetch("http://localhost:4000/api/v1/users/me", {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: loginData,
-    })
-      .then((response) => {
+    if (!token) {
+      // Redirect to login page if no token
+      window.location.href = "/login";
+      return;
+    }
+
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/api/v1/users/me", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(token)
         if (!response.ok) {
+          console.log("res:"+JSON.stringify(response))
           throw new Error("Failed to fetch profile data");
         }
-        return response.json();
-      })
-      .then((data) => {
-        setUser(data);
+
+        const data = await response.json();
+        console.log(data)
+        setUser(data.data);
+        console.log(user)
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching user data:", error);
         setError("Failed to load profile. Please try again later.");
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+    fetchProfile();
+  }, [token]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
 
-  const handleUpdate = () => {
-    fetch("http://localhost:4000/api/v1/users/update", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to update profile");
-        }
-        return response.json();
-      })
-      .then(() => {
-        alert("Profile updated successfully!");
-        setIsEditing(false);
-      })
-      .catch((error) => {
-        console.error("Error updating profile:", error);
-        alert("Failed to update profile. Please try again.");
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    console.log(user)
+    try {
+      const response = await fetch(`http://localhost:4000/api/v1/users/update/${user._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(user),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to update profile");
+      }
+
+      alert("Profile updated successfully!");
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Failed to update profile. Please try again.");
+    }
   };
 
   const handleDelete = async () => {
@@ -69,16 +78,32 @@ const UserProfile = () => {
       try {
         const response = await fetch("http://localhost:4000/api/v1/users/delete", {
           method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
+
         if (!response.ok) {
           throw new Error("Failed to delete user");
         }
+
         alert("User deleted successfully!");
+        localStorage.removeItem("token");
+        window.location.href = "/signup";
       } catch (error) {
         console.error("Error deleting user:", error);
+        alert("Failed to delete account. Please try again.");
       }
     }
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
 
   return (
     <div className="user-profile">
@@ -89,7 +114,7 @@ const UserProfile = () => {
           <input
             type="text"
             name="name"
-            value={user.name}
+            value={user.name || ""}
             onChange={handleChange}
             disabled={!isEditing}
           />
@@ -99,17 +124,7 @@ const UserProfile = () => {
           <input
             type="email"
             name="email"
-            value={user.email}
-            onChange={handleChange}
-            disabled={!isEditing}
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={user.password}
+            value={user.email || ""}
             onChange={handleChange}
             disabled={!isEditing}
           />
@@ -119,7 +134,7 @@ const UserProfile = () => {
           <input
             type="text"
             name="phone"
-            value={user.phone}
+            value={user.phone || ""}
             onChange={handleChange}
             disabled={!isEditing}
           />

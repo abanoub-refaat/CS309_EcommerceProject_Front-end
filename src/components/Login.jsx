@@ -9,45 +9,43 @@ const Login = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const savedLoginData = localStorage.getItem("loginDate");
-    if (savedLoginData) {
-      try {
-        const { email, password } = JSON.parse(savedLoginData);
-        setEmail(email);
-        setPassword(password);
-
-        if (rememberMe) {
-          fetch("http://localhost:4000/api/v1/users/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, password }),
-          })
-            .then((res) => {
-              if (!res.ok) {
-                throw new Error(
-                  "Auto-login failed: Invalid credentials or server error"
-                );
-              }
-              return res.json();
-            })
-            .then((data) => {
-              console.log("Auto-login Success:");
-              navigate("/home");
-            })
-            .catch((error) => {
-              console.error("Auto-login Error:", error.message);
-              localStorage.removeItem("loginDate");
-            });
-        }
-      } catch (error) {
-        console.error("Error parsing login data:", error.message);
-        localStorage.removeItem("loginDate");
-      }
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const savedLoginData = localStorage.getItem("loginDate");
+  //   if (savedLoginData) {
+  //     try {
+  //       const { email, password } = JSON.parse(savedLoginData);
+  //       setEmail(email);
+  //       setPassword(password); 
+  //         fetch("http://localhost:4000/api/v1/users/login", {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({ email, password }),
+  //         })
+  //           .then((res) => {
+  //             if (!res.ok) {
+  //               throw new Error(
+  //                 "Auto-login failed: Invalid credentials or server error"
+  //               );
+  //             }
+  //             return res.json();
+  //           })
+  //           .then((data) => {
+  //             console.log("Auto-login Success:");
+  //             navigate("/home");
+  //           })
+  //           .catch((error) => {
+  //             console.error("Auto-login Error:", error.message);
+  //             localStorage.removeItem("loginDate");
+  //           });
+        
+  //     } catch (error) {
+  //       console.error("Error parsing login data:", error.message);
+  //       localStorage.removeItem("loginDate");
+  //     }
+  //   }
+  // }, [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -67,8 +65,9 @@ const Login = () => {
       })
       .then((data) => {
         console.log("Success:", data);
-        const loginData = { email, password };
-        localStorage.setItem("loginDate", JSON.stringify(loginData));
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+        localStorage.setItem("token", data.data.token);
+        console.log(data.data);
         setTimeout(() => {
           navigate("/home");
         }, 1000);
