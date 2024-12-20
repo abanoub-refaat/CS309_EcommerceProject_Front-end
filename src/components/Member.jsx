@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-
+import "./Member.css";
 const Member = ({id ,name , img , github}) => {
     return (
             <div key={id} className="member-container">

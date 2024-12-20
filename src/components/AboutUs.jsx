@@ -4,6 +4,7 @@ import Member from "./Member";
 
 const AboutUs = () => {
   const Team = [
+    
     {
       id :1,
       name : "Abanoub Refaat" ,
@@ -20,10 +21,12 @@ const AboutUs = () => {
     ,
     {
       id :3,
-      name : "Youssef Emad" ,
-      img : "./assets/joe.png",
-      github : "https://github.com/youssef-emad347"
+      name : "Fady Monir", 
+      img : "./assets/foda.png",
+      github : "https://github.com/fadymonir10"
     }
+  
+ 
     ,
     {
       id :4,
@@ -48,21 +51,25 @@ const AboutUs = () => {
     ,
     {
       id :7,
-      name : "Fady Monir", 
-      img : "./assets/foda.png",
-      github : "https://github.com/fadymonir10"
+      name : "Youssef Emad" ,
+      img : "./assets/joe.png",
+      github : "https://github.com/youssef-emad347"
     }
+  
   ];
   return (
-    <div>
+  <div className="about-container">
       <h1>Our Team</h1>
+      <ul className="member-list">
       {Team.map((member) => (
-        <Member 
+       <li key = {member.id} className="member"> <Member 
         key = {member.id}
         name = {member.name}
         img = {member.img}
-        github = {member.github} />
+        github = {member.github} /> </li>
       ))}
+      </ul>
+
     </div>
   )
     
