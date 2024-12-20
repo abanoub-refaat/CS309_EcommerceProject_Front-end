@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductDetailsPage.css";
 
@@ -9,7 +9,6 @@ function ProductDetailsPage() {
   const [error, setError] = useState(null);
   const [wishlist, setWishlist] = useState([]);
 
-  // Fetch product details from API
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((response) => {
@@ -58,8 +57,11 @@ function ProductDetailsPage() {
     <div className="product-details-page">
       <div className="product-details-container">
         {/* Product Image */}
-        <img src={product.image} alt={product.title} className="product-image" />
-
+        <img
+          src={product.image}
+          alt={product.title}
+          className="product-image"
+        />
         {/* Product Info */}
         <div className="product-info">
           <h1 className="product-title">{product.title}</h1>
@@ -70,12 +72,8 @@ function ProductDetailsPage() {
           <p className="product-price">
             <strong>Price:</strong> ${product.price}
           </p>
-
-          <button className="add-to-cart-button">Add to Cart</button>
-
-          {/* Add to Wishlist Button */}
-          <button className="add-to-wishlist-button" onClick={addToWishlist}>
-            Add to Wishlist
+          <button className="add-to-cart-button" onClick={addToWishlist}>
+            Add to Cart
           </button>
         </div>
       </div>

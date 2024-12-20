@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./ProductsPage.css"; 
+import "./ProductsPage.css";
 
 function ProductsPage() {
   const [products, setProducts] = useState([]);
@@ -27,7 +27,9 @@ function ProductsPage() {
             {/* Product Name */}
             <h2 className="product-title">{product.title}</h2>
             {/* Product Price */}
-            <p className="product-price"><strong>Price:</strong> ${product.price}</p>
+            <p className="product-price">
+              <strong>Price:</strong> ${product.price}
+            </p>
             {/* Show More Button */}
             <Link to={`/product/${product.id}`}>
               <button className="show-more-button">Show More</button>
