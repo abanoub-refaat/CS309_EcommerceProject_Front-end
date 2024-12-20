@@ -26,14 +26,17 @@ const Login = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Login successful:", data);
+        console.log("Success:", data);
         localStorage.setItem("user", JSON.stringify(data.data.user));
         localStorage.setItem("token", data.data.token);
-        navigate("/home");
+        console.log(data.data);
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
       })
-      .catch((err) => {
-        setError(err.message);
-        console.error("Login error:", err.message);
+      .catch((error) => {
+        setError(error.message);
+        console.error("Error:", error.message);
       });
   };
 
