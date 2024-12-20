@@ -6,8 +6,9 @@ import Error from "./components/Error";
 import Navbar from "./components/Navbar";
 import Forget from "./components/Forget";
 import Products from "./components/ProductsPage";
-import ProductDetailsPage from "./ProductDetailsPage";
+import ProductDetailsPage from "./components/ProductDetailsPage";
 import AboutUs from "./components/AboutUs";
+import Wishlist from "./components/Wishlist";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/products" element={<Products />} />
           <Route path="/product/:id" element={<ProductDetailsPage />} />
+          <Route path="/wishlist" component={Wishlist} />
           <Route path="/" element={<Signup />} />
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
