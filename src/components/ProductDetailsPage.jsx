@@ -26,6 +26,30 @@ function ProductDetailsPage() {
       });
   }, [id]);
 
+  // Load wishlist from localStorage
+  useEffect(() => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    setWishlist(storedWishlist);
+    console.log(storedWishlist);
+  }, []);
+
+  // Add product to wishlist
+  const addToWishlist = () => {
+    if (!product) {
+      alert("Product details are not loaded yet.");
+      return;
+    }
+
+    if (!wishlist.some((item) => item.id === product.id)) {
+      const updatedWishlist = [...wishlist, product];
+      setWishlist(updatedWishlist);
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+      alert("Product added to wishlist!");
+    } else {
+      alert("This product is already in your wishlist.");
+    }
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
