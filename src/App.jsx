@@ -6,7 +6,7 @@ import Error from "./components/Error";
 import Navbar from "./components/Navbar";
 import Forget from "./components/Forget";
 import Products from "./components/ProductsPage";
-import ProductDetailsPage from "./ProductDetailsPage";
+import ProductDetailsPage from "./components/ProductDetailsPage";
 import AboutUs from "./components/AboutUs";
 
 function App() {
