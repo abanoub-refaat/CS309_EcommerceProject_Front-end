@@ -13,11 +13,14 @@ export default function Hero() {
         <Link to={"/products"} className="hero-button">
         Explore Products
         </Link>
-      </div>
+        <Link to={"/signup"} className="hero-button">
+        SignUp Now
+        </Link>
+        </div>
       </div>
       <div className="hero-image">
         <img src="./assets/hero.svg" alt="Hero-image" />
       </div>
-    </div>
+      </div>
   );
 }
