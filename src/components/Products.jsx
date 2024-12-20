@@ -6,7 +6,9 @@ function Products() {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
-  const handleClick = () => {};
+  const handleClick = () => {
+    console.log(products);
+  };
   return (
     <div className="container">
       <h2 className="products">Our products</h2>
