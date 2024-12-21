@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import Error from "./components/Error";
 import Navbar from "./components/Navbar";
 import Forget from "./components/Forget";
+import Footer from "./components/Footer";
 import Products from "./components/ProductsPage";
 import ProductDetailsPage from "./components/ProductDetailsPage";
 import AboutUs from "./components/AboutUs";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/*" element={<Error />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );

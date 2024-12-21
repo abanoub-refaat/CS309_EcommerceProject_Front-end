@@ -5,6 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-logo">
+          <img src="./assets/logo-white.png" alt="logo" />
           <h2>DealZone</h2>
         </div>
         <div className="footer-links">
@@ -24,21 +25,17 @@ const Footer = () => {
               <li><Link to="/terms">Terms & Conditions</Link></li>
             </ul>
           </div>
-        </div>
-
-        <div className="footer-bottom">
-          <p>©2024 OurSite All Rights are reserved</p>
-          <div className="footer-payment">
-          
-          </div>
           <div className="footer-social">
             <h1>Follow us on Social Media</h1>
             <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>       
+            <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>
+      <div className="footer-bottom">
+          <p>©2024 OurSite All Rights are reserved</p>
+        </div>
     </footer>
   );
 };
