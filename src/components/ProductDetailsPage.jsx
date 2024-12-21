@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductDetailsPage.css";
@@ -86,13 +87,13 @@ function ProductDetailsPage() {
         />
         {/* Product Info */}
         <div className="product-info">
-          <h1 className="product-title">{product.title}</h1>
-          <p className="product-category">
+          <h1 className="products-title">{product.title}</h1>
+          <p className="products-category">
             <strong className="category-label">Category:</strong>{" "}
             {product.category}
           </p>
-          <p className="product-description">{product.description}</p>
-          <p className="product-price">
+          <p className="products-description">{product.description}</p>
+          <p className="products-price">
             <strong>Price:</strong> ${product.price}
           </p>
 
