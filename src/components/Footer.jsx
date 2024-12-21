@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "./footer.css";
 const Footer = () => {
@@ -12,17 +13,29 @@ const Footer = () => {
           <div className="footer-column">
             <h3>Information</h3>
             <ul>
-              <li><Link to="/account">My Account</Link></li>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/cart">My Cart</Link></li>
-              <li><Link to="/wishlist">My Wishlist</Link></li>
+              <li>
+                <Link to="/account">My Account</Link>
+              </li>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/cart">My Cart</Link>
+              </li>
+              <li>
+                <Link to="/wishlist">My Wishlist</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-column2">
             <h3>Service</h3>
             <ul>
-              <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/terms">Terms & Conditions</Link></li>
+              <li>
+                <Link to="/about">About Us</Link>
+              </li>
+              <li>
+                <Link to="/terms">Terms & Conditions</Link>
+              </li>
             </ul>
           </div>
           <div className="footer-social">
@@ -41,6 +54,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-
