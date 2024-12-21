@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Hero.css";
 export default function Hero() {
+  const token = localStorage.getItem("token");
   return (
     <div className="hero-container">
       <div className="hero-content">
@@ -15,6 +16,7 @@ export default function Hero() {
           <Link to={"/products"} className="hero-button">
             Explore Products
           </Link>
+          
           <Link to={"/signup"} className="hero-button">
             SignUp Now
           </Link>
