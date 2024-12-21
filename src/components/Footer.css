@@ -55,11 +55,14 @@ ul {
     padding-left: 0; 
 }
 
-
+.footer-bottom {
+width:90% ;}
 
 .footer-social a {
     margin-right: 30px;
     font-size: 12px;
+    position: relative;
+    left: 20px;
 }
 
 .footer-bottom p {

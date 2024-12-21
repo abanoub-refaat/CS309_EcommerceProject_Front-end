@@ -40,9 +40,9 @@ const Footer = () => {
           </div>
           <div className="footer-social">
             <h1>Follow us on Social Media</h1>
-            <a href="https://www.facebook.com/yourpage" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com/yourprofile" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/yourpage"><i className="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/yourprofile"><i className="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/yourprofile"><i className="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>

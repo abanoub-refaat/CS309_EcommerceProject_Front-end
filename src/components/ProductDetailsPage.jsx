@@ -12,7 +12,7 @@ function ProductDetailsPage() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
+    fetch(`http://localhost:4000/api/v1/products/getProduct/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch product details");
@@ -20,7 +20,7 @@ function ProductDetailsPage() {
         return response.json();
       })
       .then((data) => {
-        setProduct(data);
+        setProduct(data.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -38,7 +38,6 @@ function ProductDetailsPage() {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
   }, []);
-
 
   const addToWishlist = () => {
     if (!product) {
@@ -72,13 +71,12 @@ function ProductDetailsPage() {
     }
   };
 
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="product-details-page">
-      <div className="product-details-container">
+      <div className="products-details-container">
         {/* Product Image */}
         <img
           src={product.image}
@@ -86,7 +84,7 @@ function ProductDetailsPage() {
           className="product-image"
         />
         {/* Product Info */}
-        <div className="product-info">
+        <div className="products-info">
           <h1 className="products-title">{product.title}</h1>
           <p className="products-category">
             <strong className="category-label">Category:</strong>{" "}
@@ -100,9 +98,9 @@ function ProductDetailsPage() {
           <button className="add-to-wishlist-button" onClick={addToWishlist}>
             Add to Wishlist
           </button>
-          <button className="add-to-cart-button" onClick={addToCart}> 
+          <button className="add-to-cart-button" onClick={addToCart}>
             Add to cart
-            </button>
+          </button>
         </div>
       </div>
     </div>

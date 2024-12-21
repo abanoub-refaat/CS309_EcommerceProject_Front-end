@@ -6,9 +6,9 @@ function ProductsPage() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("http://localhost:4000/api/v1/products/getAllProducts?limit=100")
       .then((response) => response.json())
-      .then((data) => setProducts(data))
+      .then((data) => setProducts(data.data))
       .catch((error) => console.error("Error fetching products:", error));
   }, []);
 
