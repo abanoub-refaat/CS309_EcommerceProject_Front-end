@@ -12,6 +12,7 @@ import AboutUs from "./components/AboutUs";
 import UserProfile from "./components/UserProfile";
 import Wishlist from "./components/Wishlist";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/forget-password" element={<Forget />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/*" element={<Error />} />
         </Routes>
         <Footer />
