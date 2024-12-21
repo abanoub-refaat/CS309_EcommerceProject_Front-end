@@ -107,7 +107,9 @@ const UserProfile = () => {
   if (error) {
     return <p>{error}</p>;
   }
-
+  if(!token){
+    return <h2>please login first </h2>
+  }
   return (
     <div className="user-profile">
       <h2>User Profile</h2>
@@ -164,7 +166,7 @@ const UserProfile = () => {
             Delete Account
           </button>
         </div>
-      </form>
+      </form> 
     </div>
   );
 };

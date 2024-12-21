@@ -39,6 +39,8 @@ function Signup() {
       if (response.ok) {
         setMessage("Signup successful!");
         setIsSuccess(true);
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+        localStorage.setItem("token", data.data.token);
         setTimeout(() => {
           navigate("/home");
         }, 1000);
