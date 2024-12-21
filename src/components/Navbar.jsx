@@ -27,7 +27,7 @@ export default function Navbar() {
             <Link to="/search">
               <i className="fas fa-search"></i>
             </Link>
-            <Link to="/shopping-cart">
+            <Link to="/cart">
               <i className="fas fa-shopping-cart"></i>
             </Link>
             <Link to="/wishlist">

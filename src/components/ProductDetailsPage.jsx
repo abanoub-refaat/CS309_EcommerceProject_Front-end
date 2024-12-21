@@ -8,6 +8,7 @@ function ProductDetailsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [wishlist, setWishlist] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -32,6 +33,12 @@ function ProductDetailsPage() {
     setWishlist(storedWishlist);
   }, []);
 
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []);
+
+
   const addToWishlist = () => {
     if (!product) {
       alert("Product details are not loaded yet.");
@@ -47,6 +54,23 @@ function ProductDetailsPage() {
       alert("This product is already in your wishlist.");
     }
   };
+
+  const addToCart = () => {
+    if (!product) {
+      alert("Product details are not loaded yet.");
+      return;
+    }
+
+    if (!cart.some((item) => item.id === product.id)) {
+      const updatedCart = [...cart, product];
+      setCart(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      alert("Product added to cart!");
+    } else {
+      alert("This product is already in your cart.");
+    }
+  };
+
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -75,7 +99,9 @@ function ProductDetailsPage() {
           <button className="add-to-wishlist-button" onClick={addToWishlist}>
             Add to Wishlist
           </button>
-          <button className="add-to-cart-button"> Add to cart</button>
+          <button className="add-to-cart-button" onClick={addToCart}> 
+            Add to cart
+            </button>
         </div>
       </div>
     </div>
