@@ -13,7 +13,6 @@ import AboutUs from "./components/AboutUs";
 import UserProfile from "./components/UserProfile";
 import Wishlist from "./components/Wishlist";
 import Cart from "./components/Cart";
-import Footer from "./components/Footer";
 import Home from "./components/Home";
 
 
