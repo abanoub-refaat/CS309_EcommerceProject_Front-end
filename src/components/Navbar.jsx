@@ -39,6 +39,9 @@ export default function Navbar() {
           </div>
         </div>
         <div className="btns-container">
+        <Link to="/userProfile" className="btn">
+            my profile
+          </Link>
           <Link to="/login" className="btn">
             login
           </Link>
