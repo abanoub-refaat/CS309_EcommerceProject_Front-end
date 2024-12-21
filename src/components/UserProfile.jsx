@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./UserProfile.css";
 
 const UserProfile = () => {
   const [user, setUser] = useState({});
@@ -9,7 +10,6 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (!token) {
-      // Redirect to login page if no token
       window.location.href = "/login";
       return;
     }
@@ -23,16 +23,13 @@ const UserProfile = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(token)
+
         if (!response.ok) {
-          console.log("res:"+JSON.stringify(response))
           throw new Error("Failed to fetch profile data");
         }
 
         const data = await response.json();
-        console.log(data)
         setUser(data.data);
-        console.log(user)
         setLoading(false);
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -40,6 +37,7 @@ const UserProfile = () => {
         setLoading(false);
       }
     };
+
     fetchProfile();
   }, [token]);
 
@@ -50,23 +48,25 @@ const UserProfile = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    console.log(user)
     try {
-      const response = await fetch(`http://localhost:4000/api/v1/users/update/${user._id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(user),
-      });
+      const response = await fetch(
+        `http://localhost:4000/api/v1/users/update/${user._id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(user),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to update profile");
       }
 
       alert("Profile updated successfully!");
-      setIsEditing(false);
+      setIsEditing(false); // Switch to view mode after saving
     } catch (error) {
       console.error("Error updating profile:", error);
       alert("Failed to update profile. Please try again.");
@@ -76,12 +76,15 @@ const UserProfile = () => {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete your account?")) {
       try {
-        const response = await fetch("http://localhost:4000/api/v1/users/delete", {
-          method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `http://localhost:4000/api/v1/users/delete/${user._id}`,
+          {
+            method: "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
         if (!response.ok) {
           throw new Error("Failed to delete user");
@@ -134,14 +137,24 @@ const UserProfile = () => {
           <input
             type="text"
             name="phone"
-            value={user.phone || ""}
+            value={user.phoneNumber || ""}
             onChange={handleChange}
             disabled={!isEditing}
           />
         </div>
-        <div>
+        <div className="buttons">
           {isEditing ? (
-            <button type="submit">Save</button>
+            <>
+              <button type="submit">Save</button>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsEditing(false);
+                }}
+              >
+                Cancel
+              </button>
+            </>
           ) : (
             <button type="button" onClick={() => setIsEditing(true)}>
               Edit
