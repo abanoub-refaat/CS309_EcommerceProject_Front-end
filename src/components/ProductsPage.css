@@ -1,63 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Parkinsans:wght@300..800&display=swap");
+
 .products-page {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  .products-page h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .product-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
- 
-  .product-image {
-    width: 150px;
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 10px;
-  }
-  
-  
-  .product-title {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  
-  .product-price {
-    margin-bottom: 15px;
-    font-size: 14px;
-    color: #555;
-  }
-  
-  
-  .show-more-button {
-    padding: 10px 20px;
-    background-color: #555;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .show-more-button:hover {
-    background-color: #555;
-  }
-  
+  padding: 20px;
+  font-family: "Parkinsans", sans-serif;
+  margin-top: 55px;
+}
+.products-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.product-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  width: 150px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.product-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.show-more-button {
+  padding: 10px 20px;
+  background-color: #555;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.show-more-button:hover {
+  background-color: #555;
+}

@@ -3,7 +3,7 @@
     color: white;
     padding: 10px 0;
     font-family: Arial, sans-serif; 
-    position: fixed; 
+    position: relative; 
     bottom: 0; 
     left: 0;
     width: 100%; 
@@ -13,24 +13,36 @@
 }
 
 .footer-container {
+    display: flex;;
     width: 90%; 
     margin: 0 auto; 
-    max-width: 1200px; 
-    flex-direction: column;
     align-items: center;
-    height: 175px;
+    height: 155px;
+}
+
+.footer-links {
+    display: grid;
+    position: relative;
+    left: 100px;
+    grid-template-columns: repeat(3, 0.5fr);
+    justify-content: center;
+    width: 80%; 
 }
 
 .footer-column {
-    text-align: center;
+    text-align: left;
     line-height: 20px;
     text-decoration: none;
 }
 
 .footer-column2 {
-    margin-top: -110px;
-    text-align: right;
+    text-align: left;
     line-height: 20px;
+}
+
+.footer-social {
+    text-align: left;
+    font-size: 6px;
 }
 
 .footer-links a {
@@ -38,24 +50,12 @@
     text-decoration: none;
 }
 
-.footer-payment {
-    justify-content: flex-start; 
-    text-align: left;
-    margin-top: -30px;
-}
-
 ul {
     list-style-type: none; 
     padding-left: 0; 
 }
 
-.footer-social {
-    justify-content: flex-end; 
-    align-items: flex-end;
-    text-align: right;
-    margin-top: -30px;
-    font-size: 6px;
-}
+
 
 .footer-social a {
     margin-right: 30px;
@@ -64,12 +64,15 @@ ul {
 
 .footer-bottom p {
     text-align: center;
-    margin-top: 30px;
     font-size: 12px;
 }
 
 .footer-logo {
     font-size: 8px;
+}
+
+.footer-logo img {
+    width: 90px;
 }
 
 @media (max-width: 768px) {
@@ -101,11 +104,6 @@ ul {
         font-size: 10px;
     }
 
-    .footer-payment {
-        text-align: center;
-        margin-top: 10px;
-    }
-
     .footer-social {
         display: flex;
         justify-content: center;
@@ -133,11 +131,6 @@ ul {
 
     .footer-bottom p {
         font-size: 8px;
-    }
-
-    .footer-payment {
-        text-align: center;
-        margin-top: 10px;
     }
 
     .footer-social {
