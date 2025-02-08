@@ -1,0 +1,143 @@
+.footer {
+    background-color: #333; 
+    color: white;
+    padding: 10px 0;
+    font-family: Arial, sans-serif; 
+    position: relative; 
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    z-index: 1000;
+    box-sizing: border-box; 
+    font-size: 10px;
+}
+
+.footer-container {
+    display: flex;;
+    width: 90%; 
+    margin: 0 auto; 
+    align-items: center;
+    height: 155px;
+}
+
+.footer-links {
+    display: grid;
+    position: relative;
+    left: 100px;
+    grid-template-columns: repeat(3, 0.5fr);
+    justify-content: center;
+    width: 80%; 
+}
+
+.footer-column {
+    text-align: left;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.footer-column2 {
+    text-align: left;
+    line-height: 20px;
+}
+
+.footer-social {
+    text-align: left;
+    font-size: 6px;
+}
+
+.footer-links a {
+    color: #ffffff; 
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none; 
+    padding-left: 0; 
+}
+
+.footer-bottom {
+width:90% ;}
+
+.footer-social a {
+    margin-right: 30px;
+    font-size: 12px;
+    position: relative;
+    left: 20px;
+}
+
+.footer-bottom p {
+    text-align: center;
+    font-size: 12px;
+}
+
+.footer-logo {
+    font-size: 8px;
+}
+
+.footer-logo img {
+    width: 90px;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        height: auto; 
+        padding: 10px;
+    }
+
+    .footer-column, .footer-column2 {
+        text-align: center;
+        margin-top: 0;
+    }
+
+    .footer-logo {
+        font-size: 10px;
+    }
+
+    .footer-social {
+        font-size: 8px;
+        margin-top: 10px;
+    }
+
+    .footer-social a {
+        margin-right: 15px;
+        font-size: 14px;
+    }
+
+    .footer-bottom p {
+        font-size: 10px;
+    }
+
+    .footer-social {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-payment img {
+        width: 40px;
+        margin: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 5px;
+    }
+
+    .footer-logo {
+        font-size: 12px;
+    }
+
+    .footer-social a {
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .footer-bottom p {
+        font-size: 8px;
+    }
+
+    .footer-social {
+        margin-top: 10px;
+    }
+
+}

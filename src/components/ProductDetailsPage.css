@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Parkinsans:wght@300..800&display=swap");
+
+.product-details-page {
+  padding: 20px;
+  font-family: "Parkinsans", sans-serif;
+}
+
+p {
+  color: #777;
+}
+
+.products-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 40px;
+  height: 100vh;
+}
+
+.products-image {
+  width: 30%;
+}
+
+.products-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 35%;
+  text-align: left;
+}
+
+.products-title {
+  font-size: 32px;
+  color: #333;
+}
+
+.products-catagory {
+  font-size: 16px;
+  color: #777;
+}
+
+.catagory-label {
+  font-size: 16px;
+  color: #333;
+}
+
+.products-description {
+  font-size: 16px;
+  color: #555;
+}
+
+.products-price {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #777;
+}
+
+.add-to-wishlist-button {
+  background-color: #263238;
+  color: #fff;
+  border: none;
+  padding: 15px 52px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.add-to-wishlist-button:hover {
+  background-color: black;
+}
+
+.add-to-wishlist-button {
+  align-self: center;
+}
+
+.add-to-cart-button {
+  background-color: #263238;
+  color: #fff;
+  border: none;
+  padding:15px 65px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.add-to-cart-button:hover {
+  background-color: black;
+}
+
+.add-to-cart-button {
+  align-self: center;
+}

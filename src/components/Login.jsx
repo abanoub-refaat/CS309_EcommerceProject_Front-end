@@ -1,31 +1,45 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    fetch("https://example.com/api/login", {
+    setError("");
+
+    fetch("http://localhost:4000/api/v1/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Invalid credentials or server error");
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log("Success:", data);
-        // Handle successful login here
+        localStorage.setItem("user", JSON.stringify(data.data.user));
+        localStorage.setItem("token", data.data.token);
+        console.log(data.data);
+        setTimeout(() => {
+          navigate("/home");
+        }, 1000);
       })
       .catch((error) => {
-        console.error("Error:", error);
-        // Handle login error here
+        setError(error.message);
+        console.error("Error:", error.message);
       });
   };
+
   return (
     <div className="login-container">
       <div className="login-image">
@@ -34,12 +48,12 @@ const Login = () => {
       <div className="login-content">
         <div className="text">
           <h2>Welcome back 👋</h2>
-          <p>please login here</p>
+          <p>Please login here</p>
         </div>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="login-form-group">
             <label htmlFor="email" className="form-label">
-              Email Adress{" "}
+              Email Address
             </label>
             <input
               type="email"
@@ -54,7 +68,7 @@ const Login = () => {
           </div>
           <div className="login-form-group">
             <label htmlFor="password" className="form-label">
-              Password{" "}
+              Password
             </label>
             <input
               type="password"
@@ -70,20 +84,12 @@ const Login = () => {
           <button type="submit" className="login-button">
             Login
           </button>
-          <label>
-            <input
-              type="checkbox"
-              checked={rememberMe}
-              className="login-checkbox"
-              onChange={(e) => setRememberMe(e.target.checked)}
-            />
-            Remember Me
-          </label>
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <div className="login-links">
-            <Link href="/forgot-password" className="forgot-password">
+            <Link to="/forget-password" className="forget-password">
               Forgot Password?
             </Link>
-            <Link href="/signup" className="register-link">
+            <Link to="/signup" className="register-link">
               Don&apos;t have an account?
             </Link>
           </div>
